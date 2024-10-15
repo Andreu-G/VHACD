@@ -14,13 +14,13 @@ The V-HACD library decomposes a 3D surface into a set of "near" convex parts. Wi
 1. Using Unity 2020.2 or later, open the Package Manager from `Window` -> `Package Manager`.
 2. In the Package Manager window, find and click the + button in the upper lefthand corner of the window. Select `Add package from git URL....`
 
-    ![image](https://user-images.githubusercontent.com/29758400/110989310-8ea36180-8326-11eb-8318-f67ee200a23d.png)
+   ![image](https://user-images.githubusercontent.com/29758400/110989310-8ea36180-8326-11eb-8318-f67ee200a23d.png)
 
 3. Enter the git URL for the desired package. Note: you can append a version tag to the end of the git url, like `#v0.4.0` or `#v0.5.0`, to declare a specific package version, or exclude the tag to get the latest from the package's `main` branch.
 
-    ```
-    https://github.com/rorygames/VHACD.git?path=/com.rorygames.vhacd
-    ```
+   ```
+   https://github.com/andreu-g/VHACD.git?path=/com.andreu-g.vhacd
+   ```
 
 4. Click `Add`.
 
@@ -34,13 +34,14 @@ Complex colliders can be used to calculate the colliders for an individual mesh,
 
 1. Add a `Complex Collider` component to your object.
 2. Choose your `Collider Quality`.
-    1. Custom quality allows you to fully control all the options, but is significantly more confusing.
+   1. Custom quality allows you to fully control all the options, but is significantly more confusing.
 3. Press either of the calculate buttons, depending on your current setup.
-    1. The interface will disable the options that are unavailable.
+   1. The interface will disable the options that are unavailable.
 4. Your collider will then be calculated and stored into a scriptable object within your project.
-    1. This allows you to quickly re-use the asset on other instances of your mesh across your scene.
+   1. This allows you to quickly re-use the asset on other instances of your mesh across your scene.
 
 ## Limitations
+
 - No runtime compilation
   - I have not tested it, nor do I plan to support it.
 - Certain parameter setups can cause significantly long processing times
@@ -58,28 +59,29 @@ A second approach consists in computing an exact convex decomposition of a surfa
 
 ![ACD vs. ECD](https://raw.githubusercontent.com/kmammou/v-hacd/master/doc/ecdvsacd.png)
 
-
 ## Parameters
-| Parameter name | Description | Default value | Range |
-| ------------- | ------------- | ------------- | ---- |
-| resolution | maximum number of voxels generated during the voxelization stage	| 100,000 | 10,000-64,000,000 |
-| depth |	maximum number of clipping stages. During each split stage, all the model parts (with a concavity higher than the user defined threshold) are clipped according the "best" clipping plane | 20 | 1-32 |
-| concavity |	maximum concavity |	0.0025 | 0.0-1.0 |
-| planeDownsampling |	controls the granularity of the search for the "best" clipping plane | 4 | 1-16 |
-| convexhullDownsampling | controls the precision of the convex-hull generation process during the clipping plane selection stage | 4 | 1-16 |
-| alpha | controls the bias toward clipping along symmetry planes | 0.05 | 0.0-1.0 |
-| beta | controls the bias toward clipping along revolution axes | 0.05 | 0.0-1.0 |
-| gamma |	maximum allowed concavity during the merge stage | 0.00125 | 0.0-1.0 |
-| pca |	enable/disable normalizing the mesh before applying the convex decomposition | 0 | 0-1 |
-| mode | 0: voxel-based approximate convex decomposition, 1: tetrahedron-based approximate convex decomposition | 0 | 0-1 |
-| maxNumVerticesPerCH |	controls the maximum number of triangles per convex-hull | 64 | 4-1024 |
-| minVolumePerCH | controls the adaptive sampling of the generated convex-hulls | 0.0001 | 0.0-0.01 |
+
+| Parameter name         | Description                                                                                                                                                                               | Default value | Range             |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------------- |
+| resolution             | maximum number of voxels generated during the voxelization stage                                                                                                                          | 100,000       | 10,000-64,000,000 |
+| depth                  | maximum number of clipping stages. During each split stage, all the model parts (with a concavity higher than the user defined threshold) are clipped according the "best" clipping plane | 20            | 1-32              |
+| concavity              | maximum concavity                                                                                                                                                                         | 0.0025        | 0.0-1.0           |
+| planeDownsampling      | controls the granularity of the search for the "best" clipping plane                                                                                                                      | 4             | 1-16              |
+| convexhullDownsampling | controls the precision of the convex-hull generation process during the clipping plane selection stage                                                                                    | 4             | 1-16              |
+| alpha                  | controls the bias toward clipping along symmetry planes                                                                                                                                   | 0.05          | 0.0-1.0           |
+| beta                   | controls the bias toward clipping along revolution axes                                                                                                                                   | 0.05          | 0.0-1.0           |
+| gamma                  | maximum allowed concavity during the merge stage                                                                                                                                          | 0.00125       | 0.0-1.0           |
+| pca                    | enable/disable normalizing the mesh before applying the convex decomposition                                                                                                              | 0             | 0-1               |
+| mode                   | 0: voxel-based approximate convex decomposition, 1: tetrahedron-based approximate convex decomposition                                                                                    | 0             | 0-1               |
+| maxNumVerticesPerCH    | controls the maximum number of triangles per convex-hull                                                                                                                                  | 64            | 4-1024            |
+| minVolumePerCH         | controls the adaptive sampling of the generated convex-hulls                                                                                                                              | 0.0001        | 0.0-0.01          |
 
 ---
 
 ## Support
 
-For feature requests, bugs, or other issues, please file a [GitHub issue](https://github.com/rorygames/VHACD/issues).
+For feature requests, bugs, or other issues, please file a [GitHub issue](https://github.com/andreu-g/VHACD/issues).
 
 ## License
+
 [Apache 2.0](LICENSE)

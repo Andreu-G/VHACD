@@ -81,7 +81,9 @@ namespace VHACD.Unity
                 _colliders[i].material = _material;
                 _colliders[i].convex = true;
                 _colliders[i].enabled = enabled;
-                if(_colliderData != null && _colliderData.computedMeshes.Length > i)
+                _colliders[i].hideFlags = _hideColliders ? HideFlags.HideInInspector : HideFlags.None;
+
+                if (_colliderData != null && _colliderData.computedMeshes.Length > i)
                 {
                     _colliders[i].sharedMesh = _colliderData.computedMeshes[i];
                 }
@@ -90,7 +92,7 @@ namespace VHACD.Unity
 
         private void OnDestroy()
         {
-            if(_colliders.Count > 0)
+            if (_colliders.Count > 0)
             {
                 foreach (var item in _colliders)
                 {
